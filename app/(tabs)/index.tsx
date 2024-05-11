@@ -1,91 +1,68 @@
-import {
-  Image,
-  StyleSheet,
-  Platform,
-  View,
-  SafeAreaViewBase,
-  Text,
-} from "react-native";
-
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import Contact from "@/components/Contact";
+import ProfessionalSummary from "@/components/ProfessionalSummary";
+import Profile from "@/components/Profile";
+import Skill from "@/components/Skill";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { Animation } from "@/components/Animation";
-import TabTwoScreen from "./explore";
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withRepeat,
-  withSpring,
-  withTiming,
-} from "react-native-reanimated";
-import { useEffect } from "react";
+import { StyleSheet, View } from "react-native";
+import Animated from "react-native-reanimated";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
-  const heartScale = useSharedValue(1);
-
-  const startAnimation = () => {
-    heartScale.value = withTiming(1.2, {
-      duration: 100,
-      easing: Easing.inOut(Easing.ease),
-    });
-  };
-
-  useEffect(() => {
-    heartScale.value = withRepeat(withSpring(1), -1, true);
-  });
-
-  const animatedHeartStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: heartScale.value }],
-      fontSize: 40,
-    };
-  });
-
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          style={styles.reactLogo}
-          src="https://media.licdn.com/dms/image/D5616AQG1lYaY6ImVTw/profile-displaybackgroundimage-shrink_350_1400/0/1710349016967?e=1720656000&v=beta&t=lKSVai1L7v1aO30pog2jqOOd7zHkM29uA7WtU4fKMEw"
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome Sandeep!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <View style={styles.step}>
-        <Animation uri="https://ca.slack-edge.com/T01R5TMEAV6-U03DKHKMRTR-c8b49ca176f9-512" />
-        <Animated.Text style={[animatedHeartStyle]}>🧑‍💻</Animated.Text>
-      </View>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.container}>
+      <Animated.ScrollView style={styles.container2}>
+        <ThemedView style={styles.profileContainer}>
+          <Profile />
+          <View>
+            <ThemedText style={styles.name} type="title">
+              SANDEEP YADAV
+            </ThemedText>
+            <ThemedText type="subtitle" style={styles.subtitle}>
+              SOFTWARE ENGINEER
+            </ThemedText>
+          </View>
+        </ThemedView>
+        <Contact />
+        <ProfessionalSummary />
+        <Skill />
+      </Animated.ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
+  container: {
+    flex: 1,
     alignItems: "center",
-    gap: 8,
+    display: "flex",
+    paddingHorizontal: 20,
+    justifyContent: "center",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  container2: {
+    flex: 1,
   },
-  reactLogo: {
-    height: "40%",
-    width: "100%",
-    bottom: 0,
-    left: -2,
-    position: "absolute",
-  },
-  step: {
-    flexDirection: "column",
+  profileContainer: {
+    display: "flex",
     alignItems: "center",
-    gap: 0,
+    justifyContent: "center",
+    backgroundColor: "inherit",
+    gap: 10,
+  },
+  image: {
+    height: 150,
+    width: 150,
+    borderRadius: 1000,
+  },
+  name: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+  subtitle: {
+    textAlign: "center",
+    fontSize: 14,
+    lineHeight: 24,
+    letterSpacing: 0.5,
   },
 });

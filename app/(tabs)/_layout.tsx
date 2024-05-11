@@ -1,9 +1,9 @@
 import { Tabs } from "expo-router";
 import React from "react";
-
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { TabCustomIcon } from "@/components/TabCustomIcon";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -13,21 +13,24 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
+        tabBarStyle: {
+          borderTopColor: "transparent",
+          display: "none",
+        },
+        tabBarLabelStyle: { display: "none" },
       }}
     >
       <Tabs.Screen
-        name="camera"
+        name="index"
         options={{
-          title: "camera",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "camera" : "camera-outline"}
-              color={color}
+            <TabCustomIcon
+              uri="https://ca.slack-edge.com/T01R5TMEAV6-U03DKHKMRTR-c8b49ca176f9-512"
+              focused={focused}
             />
           ),
         }}
       />
-
       <Tabs.Screen
         name="todo"
         options={{
@@ -35,30 +38,6 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "list" : "list-outline"}
-              color={color}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: "Explore",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
               color={color}
             />
           ),
