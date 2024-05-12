@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
@@ -11,13 +12,11 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        // headerShown: false,
-        tabBarShowLabel: false,
-        headerStyle: {
-          backgroundColor: Colors[colorScheme ?? "light"].background,
-          height: 36,
+        header: ({ route }) => {
+          return <Header />;
         },
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarShowLabel: false,
         headerTitle: "",
         tabBarStyle: {
           backgroundColor: Colors[colorScheme ?? "light"].background,
@@ -41,7 +40,6 @@ export default function TabLayout() {
           ),
         }}
       />
-
       <Tabs.Screen
         name="experience"
         options={{
