@@ -5,6 +5,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Tabs } from "expo-router";
 import React from "react";
+import { Image, StyleSheet } from "react-native";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -14,6 +15,17 @@ export default function TabLayout() {
       screenOptions={{
         header: ({ route }) => {
           return <Header />;
+        },
+        tabBarBackground: () => {
+          return (
+            <Image
+              source={{
+                uri: "https://images.unsplash.com/photo-1496065187959-7f07b8353c55?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              }}
+              style={StyleSheet.absoluteFillObject}
+              blurRadius={40}
+            />
+          );
         },
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         tabBarShowLabel: false,

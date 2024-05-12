@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import React, { ReactNode } from "react";
 import { ThemedText } from "./ThemedText";
 
-const Divider = ({ label }: { label: string }) => {
+const Divider = ({ label }: { label: string | ReactNode }) => {
   return (
     <View style={styles.container}>
       <View style={styles.divider}></View>
