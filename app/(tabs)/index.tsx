@@ -6,14 +6,20 @@ import Profile from "@/components/Profile";
 import Skill from "@/components/Skill";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { StatusBar } from "expo-status-bar";
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { StyleSheet, View } from "react-native";
 import Animated from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
+  const colorScheme = useColorScheme();
+  const color = Colors[colorScheme ?? "light"].background;
+
   return (
-    <Animated.ScrollView style={styles.scrollContainer}>
+    <Animated.ScrollView
+      style={[styles.scrollContainer, { backgroundColor: color }]}
+    >
       <SafeAreaView style={styles.container}>
         <ThemedView style={styles.profileContainer}>
           <Profile />

@@ -1,14 +1,19 @@
-import { Ionicons } from "@expo/vector-icons";
-import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
-import { ThemedText } from "./ThemedText";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import {
+  AntDesign,
+  FontAwesome5,
+  FontAwesome6,
+  Ionicons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { ThemedText } from "./ThemedText";
 
 const Interests = () => {
   const colorScheme = useColorScheme();
   const color = Colors[colorScheme ?? "light"].tint;
-  const imageColor = colorScheme === "dark" && { backgroundColor: color };
 
   return (
     <View style={styles.container}>
@@ -16,41 +21,25 @@ const Interests = () => {
         <View style={styles.skillRow}>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Boxing</ThemedText>
-            <Image
-              source={{
-                uri: "https://cdn.iconscout.com/icon/premium/png-256-thumb/boxing-71-163276.png?f=webp&w=256",
-              }}
-              style={[styles.logo, imageColor]}
+            <MaterialCommunityIcons
+              name="boxing-glove"
+              size={28}
+              color={color}
             />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Running</ThemedText>
-            <Image
-              source={{
-                uri: "https://cdn.iconscout.com/icon/premium/png-512-thumb/running-1465833-1241831.png?f=webp&w=512",
-              }}
-              style={[styles.logo, imageColor]}
-            />
+            <FontAwesome6 name="person-running" size={28} color={color} />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Badminton</ThemedText>
-            <Image
-              source={{
-                uri: "https://cdn.iconscout.com/icon/free/png-512/free-badminton-2581245-2152507.png?f=webp&w=512",
-              }}
-              style={[styles.logo, imageColor]}
-            />
+            <MaterialCommunityIcons name="badminton" size={28} color={color} />
           </View>
         </View>
         <View style={styles.skillRow}>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Chess</ThemedText>
-            <Image
-              source={{
-                uri: "https://cdn.iconscout.com/icon/premium/png-256-thumb/chess-board-battle-game-sport-58247.png?f=webp&w=256",
-              }}
-              style={[styles.logo, imageColor]}
-            />
+            <FontAwesome5 name="chess-board" size={28} color={color} />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Traveling</ThemedText>
@@ -58,12 +47,7 @@ const Interests = () => {
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Problem Solving</ThemedText>
-            <Image
-              source={{
-                uri: "https://cdn.iconscout.com/icon/premium/png-512-thumb/problem-solving-3757150-3138959.png?f=webp&w=512",
-              }}
-              style={[styles.logo, imageColor]}
-            />
+            <AntDesign name="solution1" size={28} color={color} />
           </View>
         </View>
       </View>
@@ -101,12 +85,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 5,
-  },
-
-  logo: {
-    height: 28,
-    width: 28,
-    borderRadius: 5,
   },
 
   skillText: {

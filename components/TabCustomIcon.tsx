@@ -1,17 +1,7 @@
-import "react-native-gesture-handler";
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-  withTiming,
-} from "react-native-reanimated";
-import {
-  Gesture,
-  GestureDetector,
-  GestureHandlerRootView,
-} from "react-native-gesture-handler";
+import { StyleSheet } from "react-native";
+import "react-native-gesture-handler";
+import Animated from "react-native-reanimated";
 
 export const TabCustomIcon = ({
   uri,
@@ -22,10 +12,7 @@ export const TabCustomIcon = ({
 }) => {
   return (
     <Animated.Image
-      style={[
-        styles.box,
-        focused ? { borderColor: "#A1CEDC" } : { borderColor: "transparent" },
-      ]}
+      style={[styles.box]}
       source={{
         uri,
       }}
@@ -35,10 +22,8 @@ export const TabCustomIcon = ({
 
 const styles = StyleSheet.create({
   box: {
-    height: 40,
-    width: 40,
+    height: 36,
+    width: 36,
     borderRadius: 1000,
-    borderWidth: 2,
-    borderStyle: "solid",
   },
 });

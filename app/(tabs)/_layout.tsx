@@ -1,9 +1,9 @@
-import { Tabs } from "expo-router";
-import React from "react";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { TabCustomIcon } from "@/components/TabCustomIcon";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Tabs } from "expo-router";
+import React from "react";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -12,31 +12,43 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        headerShown: false,
-        tabBarStyle: {
-          display: "none",
+        // headerShown: false,
+        tabBarShowLabel: false,
+        headerStyle: {
+          backgroundColor: Colors[colorScheme ?? "light"].background,
+          height: 36,
         },
-        tabBarLabelStyle: { display: "none" },
+        headerTitle: "",
+        tabBarStyle: {
+          backgroundColor: Colors[colorScheme ?? "light"].background,
+          shadowColor: Colors[colorScheme ?? "light"].text,
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.5,
+          shadowRadius: 5,
+          elevation: 5,
+          borderTopWidth: 0,
+        },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          tabBarIcon: ({ focused }) => (
-            <TabCustomIcon
-              uri="https://ca.slack-edge.com/T01R5TMEAV6-U03DKHKMRTR-c8b49ca176f9-512"
-              focused={focused}
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "person" : "person-outline"}
+              color={color}
             />
           ),
         }}
       />
+
       <Tabs.Screen
-        name="todo"
+        name="experience"
         options={{
-          title: "Todo",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "list" : "list-outline"}
+            <MaterialIcons
+              name={focused ? "work" : "work-outline"}
+              size={28}
               color={color}
             />
           ),

@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from "react-native";
 import React from "react";
+import { StyleSheet, View } from "react-native";
 import { ThemedText } from "./ThemedText";
 
 const ProfessionalSummary = () => {
@@ -17,8 +17,6 @@ const ProfessionalSummary = () => {
   );
 };
 
-export default ProfessionalSummary;
-
 const styles = StyleSheet.create({
   summary: {
     fontSize: 16,
@@ -29,5 +27,4 @@ const styles = StyleSheet.create({
   },
 });
 
-// HTML | CSS | JavaScript | TypeScript | React js | Redux | Next js | React-Native | Expo | Testing | Node.js | Express.js | MongoDB |
-// Tailwind CSS
+export default ProfessionalSummary;
