@@ -2,27 +2,29 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { ThemedText } from "./ThemedText";
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 const Skill = () => {
+  const colorScheme = useColorScheme();
+  const color = Colors[colorScheme ?? "light"].tint;
+  const imageColor = colorScheme === "dark" && { backgroundColor: color };
+
   return (
     <View style={styles.container}>
-      <ThemedText type="subtitle" style={styles.subtitle}>
-        SKILL
-      </ThemedText>
-
       <View style={styles.skillsList}>
         <View style={styles.skillRow}>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>HTML</ThemedText>
-            <Ionicons name="logo-html5" size={28} />
+            <Ionicons name="logo-html5" size={28} color={color} />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>CSS</ThemedText>
-            <Ionicons name="logo-css3" size={28} />
+            <Ionicons name="logo-css3" size={28} color={color} />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Javascript</ThemedText>
-            <Ionicons name="logo-javascript" size={28} />
+            <Ionicons name="logo-javascript" size={28} color={color} />
           </View>
         </View>
         <View style={styles.skillRow}>
@@ -32,12 +34,12 @@ const Skill = () => {
               source={{
                 uri: "https://cdn.iconscout.com/icon/free/png-256/free-typescript-2336947-1982828.png?f=webp&w=256",
               }}
-              style={styles.logo}
+              style={[styles.logo, imageColor]}
             />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>React.js</ThemedText>
-            <Ionicons name="logo-react" size={28} />
+            <Ionicons name="logo-react" size={28} color={color} />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Redux</ThemedText>
@@ -45,7 +47,7 @@ const Skill = () => {
               source={{
                 uri: "https://cdn.iconscout.com/icon/free/png-512/free-redux-3628430-3032265.png?f=webp&w=512",
               }}
-              style={styles.logo}
+              style={[styles.logo, imageColor]}
             />
           </View>
         </View>
@@ -53,7 +55,7 @@ const Skill = () => {
         <View style={styles.skillRow}>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Next.js</ThemedText>
-            <Ionicons name="logo-nodejs" size={28} />
+            <Ionicons name="logo-nodejs" size={28} color={color} />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>React-Native</ThemedText>
@@ -61,7 +63,7 @@ const Skill = () => {
               source={{
                 uri: "https://cdn.iconscout.com/icon/premium/png-512-thumb/atom-11276664-9339327.png?f=webp&w=512",
               }}
-              style={styles.logo}
+              style={[styles.logo, imageColor]}
             />
           </View>
           <View style={styles.skill}>
@@ -70,7 +72,7 @@ const Skill = () => {
               source={{
                 uri: "https://styles.redditmedia.com/t5_r5s6c/styles/communityIcon_s4jytydsjrx11.jpg?format=pjpg&s=b837558d39c49984b5ff217cf0008a0331e1643a",
               }}
-              style={styles.logo}
+              style={[styles.logo, imageColor]}
             />
           </View>
         </View>
@@ -81,12 +83,12 @@ const Skill = () => {
               source={{
                 uri: "https://cdn.iconscout.com/icon/free/png-512/free-jest-3628272-3031965.png?f=webp&w=512",
               }}
-              style={styles.logo}
+              style={[styles.logo, imageColor]}
             />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Node.js</ThemedText>
-            <Ionicons name="logo-nodejs" size={28} />
+            <Ionicons name="logo-nodejs" size={28} color={color} />
           </View>
           <View style={styles.skill}>
             <ThemedText style={styles.skillText}>Express.js</ThemedText>
@@ -94,7 +96,7 @@ const Skill = () => {
               source={{
                 uri: "https://cdn.iconscout.com/icon/free/png-512/free-express-8-1175029.png?f=webp&w=512",
               }}
-              style={styles.logo}
+              style={[styles.logo, imageColor]}
             />
           </View>
         </View>
@@ -105,7 +107,7 @@ const Skill = () => {
           source={{
             uri: "https://cdn.iconscout.com/icon/premium/png-512-thumb/mongodb-2749309-2284699.png?f=webp&w=512",
           }}
-          style={styles.logo}
+          style={[styles.logo, imageColor]}
         />
       </View>
     </View>
@@ -118,15 +120,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    marginTop: 20,
     gap: 15,
-  },
-
-  subtitle: {
-    textAlign: "center",
-    fontSize: 18,
-    lineHeight: 24,
-    letterSpacing: 0.5,
   },
 
   skillRow: {
@@ -155,6 +149,7 @@ const styles = StyleSheet.create({
   logo: {
     height: 28,
     width: 28,
+    borderRadius: 5,
   },
 
   skillText: {

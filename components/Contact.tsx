@@ -1,32 +1,13 @@
-import {
-  Image,
-  StyleSheet,
-  Platform,
-  View,
-  SafeAreaViewBase,
-  Text,
-  Linking,
-} from "react-native";
-
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { TabCustomIcon } from "@/components/TabCustomIcon";
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withRepeat,
-  withSpring,
-  withTiming,
-} from "react-native-reanimated";
-import { useEffect } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Linking, StyleSheet, View } from "react-native";
 import { ExternalLink } from "@/components/ExternalLink";
 import { Ionicons } from "@expo/vector-icons";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { Colors } from "@/constants/Colors";
 
 const Contact = () => {
+  const colorScheme = useColorScheme();
+  const color = Colors[colorScheme ?? "light"].tint;
+
   const call = () => {
     Linking.openURL(`tel:9166250560`);
   };
@@ -43,19 +24,19 @@ const Contact = () => {
   return (
     <View style={styles.contact}>
       <ExternalLink href="https://github.com/Raosandeep007">
-        <Ionicons name="logo-github" size={28} />
+        <Ionicons name="logo-github" size={28} color={color} />
       </ExternalLink>
       <ExternalLink href="https://www.linkedin.com/in/sandeep-yadav-828779149/">
-        <Ionicons name="logo-linkedin" size={28} />
+        <Ionicons name="logo-linkedin" size={28} color={color} />
       </ExternalLink>
       <ExternalLink href="https://raosandeep007.netlify.app/">
-        <Ionicons name="globe" size={28} />
+        <Ionicons name="globe" size={28} color={color} />
       </ExternalLink>
       <ExternalLink href="">
-        <Ionicons name="call" size={28} onPress={call} />
+        <Ionicons name="call" size={28} onPress={call} color={color} />
       </ExternalLink>
       <ExternalLink href="">
-        <Ionicons name="mail" size={28} onPress={mail} />
+        <Ionicons name="mail" size={28} onPress={mail} color={color} />
       </ExternalLink>
     </View>
   );
