@@ -4,6 +4,7 @@ import Interests from "@/components/Interests";
 import ProfessionalSummary from "@/components/ProfessionalSummary";
 import Profile from "@/components/Profile";
 import Skill from "@/components/Skill";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
@@ -14,15 +15,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
-  const color = Colors[colorScheme ?? "light"].background;
+  const backgroundColor = Colors[colorScheme ?? "light"].background;
 
   return (
     <Animated.ScrollView
-      style={[styles.scrollContainer, { backgroundColor: color }]}
+      style={[styles.scrollContainer, { backgroundColor: backgroundColor }]}
     >
+      <ThemeSwitcher />
       <SafeAreaView style={styles.container}>
         <ThemedView style={styles.profileContainer}>
           <Profile />
+
           <View>
             <ThemedText style={styles.name} type="title">
               Sandeep yadav
@@ -60,8 +63,8 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "inherit",
     gap: 10,
+    width: "100%",
   },
 
   image: {
