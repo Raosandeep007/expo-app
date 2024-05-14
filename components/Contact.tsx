@@ -1,8 +1,9 @@
-import { Linking, StyleSheet, View } from "react-native";
+import { Linking, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ExternalLink } from "@/components/ExternalLink";
 import { Ionicons } from "@expo/vector-icons";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { Colors } from "@/constants/Colors";
+import * as Sharing from "expo-sharing";
 
 const Contact = () => {
   const colorScheme = useColorScheme();
@@ -19,6 +20,15 @@ const Contact = () => {
         Please let me know your availability for a call.
         Thanks!
         `);
+  };
+
+  const share = async () => {
+    await Sharing.shareAsync(
+      "https://drive.google.com/drive/folders/13PcPxfo-pkRGAj4HoJic8oljUXtyT6PY?usp=sharing",
+      {
+        UTI: "public.url",
+      }
+    );
   };
 
   return (
@@ -38,6 +48,10 @@ const Contact = () => {
       <ExternalLink href="">
         <Ionicons name="mail" size={28} onPress={mail} color={color} />
       </ExternalLink>
+
+      <TouchableOpacity onPress={share}>
+        <Ionicons name="share" size={28} color={color} />
+      </TouchableOpacity>
     </View>
   );
 };
