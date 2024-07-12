@@ -3,7 +3,6 @@ import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
-import React from "react";
 import {
   SectionList,
   StatusBar,
@@ -11,6 +10,7 @@ import {
   View,
   useColorScheme,
 } from "react-native";
+import React from "react";
 
 const Experience = () => {
   const colorScheme = useColorScheme();
