@@ -1,3 +1,4 @@
+import React from "react";
 import { Linking, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ExternalLink } from "@/components/ExternalLink";
 import { Ionicons } from "@expo/vector-icons";

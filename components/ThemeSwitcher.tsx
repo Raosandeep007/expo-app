@@ -1,3 +1,4 @@
+import React from "react";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { useToggleTheme } from "@/hooks/useToggleTheme";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
